@@ -5,7 +5,7 @@ import styles from './MealsList.module.css';
 const MealsList = (props) => {
     return (
         <Card className={styles['meals-list__wrapper']}>
-            {props.data.map((e) => <MealItem item={e}/>)}
+            {props.data.map((e) => <MealItem item={e} key={e.id}/>)}
         </Card>
     );
 }

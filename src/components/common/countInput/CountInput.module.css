@@ -1,0 +1,33 @@
+.component-wrapper {
+    font-weight: 400;
+    display: flex;
+}
+
+.component-wrapper > *{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    margin: 0 !important;
+    background-color: var(--brand-color-black);
+    color: var(--brand-color-white);
+}
+
+.count-control:nth-child(1) {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.count-control:nth-child(3) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.count-control {
+    cursor: pointer;
+    width: 1rem;
+}
+
+.value-container {
+    width: 1.5rem;
+}

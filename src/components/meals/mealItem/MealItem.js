@@ -1,6 +1,12 @@
+import React, { useState } from 'react';
+
+import CountInput from '../../common/countInput/CountInput';
 import styles from './MealItem.module.css';
 
 const MealItem = ({ item }) => {
+    const [itemsCount, setItemsCount] = useState(1);
+    const changeCountHandler = (value) => setItemsCount(value);
+
     return (
         <div className={styles['meals-item__wrapper']}>
             <div className={styles['image']}>
@@ -14,8 +20,8 @@ const MealItem = ({ item }) => {
                 <p className={styles['price']}>{item.price} $</p>
             </div>
             <div className={styles['control-block']}>
-                <button>Count</button>
-                <button>Add to Cart</button>
+                <CountInput value={itemsCount} onChange={changeCountHandler}/>
+                <button><b>Add to Cart</b></button>
             </div>
         </div>
     );
