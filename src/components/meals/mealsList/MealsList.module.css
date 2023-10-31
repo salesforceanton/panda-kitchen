@@ -1,0 +1,30 @@
+.meals-list__wrapper {
+    margin: 2rem auto;
+    position: relative;
+    width: 50%;
+    animation: meals-appear 1s ease-out forwards;
+}
+  
+@keyframes meals-appear {
+    from {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+@media (min-width: 862px) and (max-width: 1240px)  {
+    .meals-list__wrapper {
+        width: 80%;
+    }
+}
+
+@media (max-width: 862px) {
+    .meals-list__wrapper {
+        width: 95%;
+    }
+}
