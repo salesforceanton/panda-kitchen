@@ -4,6 +4,7 @@ import headerImage from '../../../assests/kuhnya.jpg';
 import brandImage from '../../../assests/brand-image.png';
 
 import styles from './Header.module.css';
+import HeaderCartButton from '../../cart/headerCartButton/HeaderCartButton';
 
 const Header = (props) => {
     return (
@@ -13,7 +14,7 @@ const Header = (props) => {
                     <img src={brandImage} alt='Panda Logo'/>
                     <h1>Panda Kitchen</h1>
                 </div>
-                <button>Cart</button>
+                <HeaderCartButton/>
             </header>
             <div className={styles['header-image']}>
                 <img src={headerImage} alt='China Meals'/>
