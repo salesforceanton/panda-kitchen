@@ -6,59 +6,59 @@ export const CART_ACTION_TYPES = Object.freeze({
     CLEAR_CART: 'cart/CLEAR_CART'
 });
 
-export const CartItemsReducer = (state, action) => {
+export const CartReducer = (state, action) => {
     switch (action.type) {
         case CART_ACTION_TYPES.ADD_ITEM:
-            const existedItem = state.fing((e) => e.id === action.payload.id);
+            const existedItem = state.items.find((e) => e.id === action.payload.id);
             const amount = action.payload.price * action.payload.count;
             if (existedItem) {
                 existedItem.count += action.payload.count;
-                existedItem.amount += amount
+                existedItem.amount += amount;
+
+                return {
+                    ...state,
+                    amount: state.amount + amount
+                };
             } else {
-                state.push({
-                    ...action.payload,
-                    amount: amount
-                })
+                return {
+                    items: [{
+                        ...action.payload,
+                        amount
+                    }, ...state.items],
+                    amount: state.amount + amount
+                };
             }
-            return state;
         case CART_ACTION_TYPES.ADD_ITEM_COUNT: 
-            const existedCartItem = state.fing((e) => e.id === action.payload.id);
+            const existedCartItem = state.items.find((e) => e.id === action.payload.id);
            
-            existedCartItem.count += action.payload.count;
+            existedCartItem.count++;
             existedCartItem.amount += action.payload.price;
 
-            return state;
+            return {
+                ...state,
+                amount: state.amount += action.payload.price
+            };
         case CART_ACTION_TYPES.REDUCE_ITEM_COUNT: 
-            const targetItem = state.fing((e) => e.id === action.payload.id);
+            const targetItem = state.items.find((e) => e.id === action.payload.id);
            
             targetItem.count--;
-            existedCartItem.amount -= action.payload.price;
+            targetItem.amount -= action.payload.price;
 
-            return state;
+            return {
+                ...state,
+                amount: state.amount -= action.payload.price
+            };;
         case CART_ACTION_TYPES.REMOVE_ITEM: 
-            return state.filter((e) => e.id === action.payload.id);
+            return {
+                items: state.items.filter((e) => e.id !== action.payload.id),
+                amount: state.amount -= (action.payload.price * action.payload.count)
+            }
         case CART_ACTION_TYPES.CLEAR_CART: 
-            return [];
+            return {
+                items: [],
+                amount: 0
+            };
         default:
             return state;
     }
 }
-
-export const CartAmountReducer = (state, action) => {
-    switch (action.type) {
-        case CART_ACTION_TYPES.ADD_ITEM:
-            const amount = action.payload.price * action.payload.count;
-            return state += amount;
-        case CART_ACTION_TYPES.ADD_ITEM_COUNT: 
-            return state += action.payload.price;
-        case CART_ACTION_TYPES.REDUCE_ITEM_COUNT: 
-            return state -= action.payload.price;
-        case CART_ACTION_TYPES.REMOVE_ITEM: 
-            return state -= (action.payload.price * action.payload.count)
-        case CART_ACTION_TYPES.CLEAR_CART: 
-            return 0;
-        default:
-            return state;
-    }
-}
-

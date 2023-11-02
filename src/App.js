@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Header from "./components/layout/header/Header";
 import Meals from "./components/meals/meals/Meals";
-import Cart from "./components/cart/Cart/Cart";
+import Cart from "./components/cart/cart/Cart";
 
 function App() {
     const [showCart, setShowCart] = useState(false);

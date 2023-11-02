@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { CartAmountReducer, CartItemsReducer, CART_ACTION_TYPES } from "./utils";
+import { CartReducer, CART_ACTION_TYPES } from "./utils";
 
 export const CartContext = React.createContext({
     items: [],
@@ -12,19 +12,24 @@ export const CartContext = React.createContext({
 });
 
 const CartProvider = (props) => {
-    const [itemsState, dispatchItemsStateChange] = useReducer(CartItemsReducer, []);
-    const [amountState, dispatchAmountStateChange] = useReducer(CartAmountReducer, 0);
+    const [cartState, dispatchCartStateChange] = useReducer(
+        CartReducer, 
+        { 
+            items: [],
+            amount: 0
+        }
+    );
 
-    const addItem = (payload) => dispatchItemsStateChange({ type: CART_ACTION_TYPES.ADD_ITEM, payload });
-    const addItemCount = (payload) => dispatchItemsStateChange({ type: CART_ACTION_TYPES.ADD_ITEM_COUNT, payload });
-    const removeItemCount = (payload) => dispatchItemsStateChange({ type: CART_ACTION_TYPES.REDUCE_ITEM_COUNT, payload });
-    const removeItem = (payload) => dispatchItemsStateChange({ type: CART_ACTION_TYPES.REMOVE_ITEM, payload });
-    const crearCart = (payload) => dispatchItemsStateChange({ type: CART_ACTION_TYPES.CLEAR_CART, payload });
+    const addItem = (payload) => dispatchCartStateChange({ type: CART_ACTION_TYPES.ADD_ITEM, payload });
+    const addItemCount = (payload) => dispatchCartStateChange({ type: CART_ACTION_TYPES.ADD_ITEM_COUNT, payload });
+    const removeItemCount = (payload) => dispatchCartStateChange({ type: CART_ACTION_TYPES.REDUCE_ITEM_COUNT, payload });
+    const removeItem = (payload) => dispatchCartStateChange({ type: CART_ACTION_TYPES.REMOVE_ITEM, payload });
+    const crearCart = (payload) => dispatchCartStateChange({ type: CART_ACTION_TYPES.CLEAR_CART, payload });
 
     return (
         <CartContext.Provider value={{
-            items: itemsState,
-            amount: amountState,
+            items: cartState.items,
+            amount: cartState.amount,
             addItem,
             addItemCount,
             removeItemCount,

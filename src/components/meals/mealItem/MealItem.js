@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import CountInput from '../../common/countInput/CountInput';
 import styles from './MealItem.module.css';
+import { CartContext } from '../../cart/cartContext/CartContext';
 
 const MealItem = ({ item }) => {
+    const cartCtx = useContext(CartContext);
+
     const [itemsCount, setItemsCount] = useState(1);
     const changeCountHandler = (value) => setItemsCount(value);
+    const addToCardHandler = () => {
+        cartCtx.addItem({ ...item, count: itemsCount });
+        setItemsCount(1);
+    }
 
     return (
         <div className={styles['meals-item__wrapper']}>
@@ -21,7 +28,7 @@ const MealItem = ({ item }) => {
             </div>
             <div className={styles['control-block']}>
                 <CountInput value={itemsCount} onChange={changeCountHandler}/>
-                <button><b>Add to Cart</b></button>
+                <button onClick={addToCardHandler}><b>Add to Cart</b></button>
             </div>
         </div>
     );
