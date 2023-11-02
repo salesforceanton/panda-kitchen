@@ -14,7 +14,7 @@ const Header = (props) => {
                     <img src={brandImage} alt='Panda Logo'/>
                     <h1>Panda Kitchen</h1>
                 </div>
-                <HeaderCartButton/>
+                <HeaderCartButton onClick={props.onOpenCart}/>
             </header>
             <div className={styles['header-image']}>
                 <img src={headerImage} alt='China Meals'/>

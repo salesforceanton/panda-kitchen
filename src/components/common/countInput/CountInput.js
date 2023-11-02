@@ -4,6 +4,7 @@ const CountInput = (props) => {
     const countUpHandler = () => props.onChange(props.value + 1);
     const countDownHandler = () => {
         if (props.value === 1) {
+            props.onRemove && props.onRemove();
             return;
         }
         props.onChange(props.value - 1)
