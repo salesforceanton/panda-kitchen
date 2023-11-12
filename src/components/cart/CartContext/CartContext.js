@@ -8,7 +8,7 @@ export const CartContext = React.createContext({
     addItemCount: () => {},
     removeItemCount: () => {},
     removeItem: () => {},
-    crearCart: () => {}
+    clearCart: () => {}
 });
 
 const CartProvider = (props) => {
@@ -24,7 +24,7 @@ const CartProvider = (props) => {
     const addItemCount = (payload) => dispatchCartStateChange({ type: CART_ACTION_TYPES.ADD_ITEM_COUNT, payload });
     const removeItemCount = (payload) => dispatchCartStateChange({ type: CART_ACTION_TYPES.REDUCE_ITEM_COUNT, payload });
     const removeItem = (payload) => dispatchCartStateChange({ type: CART_ACTION_TYPES.REMOVE_ITEM, payload });
-    const crearCart = (payload) => dispatchCartStateChange({ type: CART_ACTION_TYPES.CLEAR_CART, payload });
+    const clearCart = () => dispatchCartStateChange({ type: CART_ACTION_TYPES.CLEAR_CART });
 
     return (
         <CartContext.Provider value={{
@@ -34,7 +34,7 @@ const CartProvider = (props) => {
             addItemCount,
             removeItemCount,
             removeItem,
-            crearCart
+            clearCart
         }}>
             {props.children}
         </CartContext.Provider>

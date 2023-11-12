@@ -61,6 +61,7 @@
     padding: 0.5rem 1rem;
     border-radius: 15px;
     font-weight: bold;
+    width: 12.5rem;
 }
       
 .submit-button:hover,
@@ -86,9 +87,6 @@
 .cart-items__wrapper {
     padding: 0.5rem 1rem;
 }
-
-
-
 
 .footer > p {
     text-align: end;

@@ -37,7 +37,7 @@ const Cart = (props) => {
                         <div className={styles['footer']}>
                             <p><b>Amount:</b> {cartCtx.amount.toFixed(2)}$</p>
                             <div className={styles['footer-control']}>
-                                <button className={styles['submit-button']}>
+                                <button className={styles['submit-button']} onClick={props.onPlaceOrder}>
                                     <b>Place an Order</b>
                                 </button>
                             </div>

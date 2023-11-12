@@ -1,0 +1,76 @@
+button {
+    box-sizing: border-box;
+    height: 2rem;
+    width: 20rem;
+    border-radius: 5px;
+    border: var(--border-neutral-thin);
+    font-family: inherit;
+}
+
+button {
+    height: 2.5rem;
+    cursor: pointer;
+}
+
+.form-wrapper {
+    width: 500px;
+    background-color: var(--gradient-neutral-80);
+}
+
+form > * {
+    margin: 1.5rem;
+}
+
+.form-header {
+    text-align: center;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-weight: bold;
+    width: 12.5rem;
+}
+
+.cancel-button {
+    background-color: var(--brand-color-white);
+}
+
+.submit-button {
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: var(--brand-color-black);
+    color: var(--gradient-neutral-70);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+      
+.submit-button:hover,
+.submit-button:active {
+    background-color: var(--brand-color-yellow);
+    color: var(--brand-color-black); 
+}
+
+.footer {
+    width: auto;
+}
+
+.footer-control {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer > p {
+    text-align: end;
+}
+
+@media (max-width: 1280px) {
+    .form-wrapper {
+        width: 40vw;
+    }
+}

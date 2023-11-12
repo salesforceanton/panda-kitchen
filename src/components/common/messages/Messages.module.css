@@ -4,13 +4,13 @@
     justify-content: center;
     width: 100%;
     height: 2rem;
-    position: absolute;
+    position: fixed;
     top: 1rem;  
 }
 
 .message {
     height: auto;
-    width: 30rem;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: flex-start;
